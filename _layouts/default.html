@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html lang="{{ site.lang | default: "en-US" }}">
+  <script language="javascript">
+    function send_click_event(label,value) {
+     ga('send', 'event', 'click', 'Nav Click', label, value);
+    }
+  </script>
   <head>
     <meta charset="UTF-8">
-
+    
 {% seo %}
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style" type="text/css" crossorigin>
@@ -19,11 +24,11 @@
       <h1 class="project-name">{{ page.title | default: site.title | default: site.github.repository_name }}</h1>
       <h2 class="project-tagline">{{ page.description | default: site.description | default: site.github.project_tagline }}</h2>
       {% if site.github.is_project_page %}
-        <a href="{{ site.github.repository_url }}" class="btn">View on GitHub</a>
+        <a href="{{ site.github.repository_url }}" class="btn" onclick=send_click_event("View on GitHub","{{ site.github.repository_url }}")>View on GitHub</a>
       {% endif %}
       {% if site.show_downloads %}
-        <a href="{{ site.github.zip_url }}" class="btn">Download .zip</a>
-        <a href="{{ site.github.tar_url }}" class="btn">Download .tar.gz</a>
+        <a href="{{ site.github.zip_url }}" class="btn" onclick=send_click_event("Download .zip","{{ site.github.zip_url }}">Download .zip</a>
+        <a href="{{ site.github.tar_url }}" class="btn" onclick=send_click_event("Download .tar.gz","{{ site.github.tar_url }}">Download .tar.gz</a>
       {% endif %}
     </header>
 
